@@ -47,8 +47,8 @@ const Index = () => {
 
   return (
     <ChakraProvider>
-      <Container maxW="container.xl" py={4}>
-        <Tabs variant="soft-rounded" colorScheme="teal">
+      <Container maxW="container.xl" py={4} bg="white">
+        <Tabs variant="soft-rounded" colorScheme="green">
           <TabList>
             <Tab>
               <FaHome /> Home
@@ -71,13 +71,17 @@ const Index = () => {
               </Heading>
               <VStack spacing={4}>
                 {dashboards.map((dashboard) => (
-                  <Box key={dashboard.id} p={4} borderWidth="1px" borderRadius="lg" w="100%">
+                  <Box key={dashboard.id} p={4} borderWidth="1px" borderRadius="lg" w="100%" bg="yellow">
                     <Heading as="h3" size="md">
                       {dashboard.title}
                     </Heading>
                     <Text>{dashboard.description}</Text>
-                    <Text>Last Updated: {dashboard.lastUpdated}</Text>
-                    <Text>Owner: {dashboard.owner}</Text>
+                    <Text color="gray">Last Updated: {dashboard.lastUpdated}</Text>
+                    <Text color="gray">Owner: {dashboard.owner}</Text>
+                    <Text color="gray">Top Used Fields: {dashboard.topUsedFields.join(", ")}</Text>
+                    <Link href={dashboard.reportLink} color="green" isExternal>
+                      View Report
+                    </Link>
                   </Box>
                 ))}
               </VStack>
